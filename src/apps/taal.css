@@ -1,0 +1,37 @@
+.taal { display: grid; grid-template-columns: minmax(200px, 32%) 1fr; grid-template-rows: minmax(0, 1fr); height: 100%; background: #140410; color: var(--pearl); }
+.taal__stage { position: relative; min-height: 200px; min-width: 0; }
+.taal__viz { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.taal__deck { padding: 14px 16px; overflow: auto; display: flex; flex-direction: column; gap: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02)); border-left: 1px solid rgba(255,255,255,.1); }
+.taal .label { color: #f3c6dd; }
+.taal__row { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; }
+.taal__row label { display: flex; flex-direction: column; gap: 4px; }
+.taal__row .field { background: rgba(255,255,255,.92); color: var(--ink); }
+.taal__row--small { align-items: center; }
+.taal .pill { background: rgba(255,255,255,.08); color: var(--pearl); border-color: rgba(255,255,255,.3); }
+.taal .pill[aria-pressed='true'] { background: var(--accent-strong); border-color: transparent; }
+.taal__play { min-width: 96px; justify-content: center; }
+.taal__bpm input { width: 140px; accent-color: var(--accent); }
+.taal__seed { font-family: var(--f-pixel); font-size: 17px; color: #f3c6dd; }
+.taal__grid { display: flex; flex-direction: column; gap: 4px; overflow-x: auto; padding-bottom: 4px; }
+.tg-row { display: grid; grid-template-columns: 96px repeat(var(--steps), minmax(22px, 1fr)); gap: 4px; align-items: center; }
+.tg-head { font-size: 10px; font-weight: 600; color: #f3c6dd; white-space: nowrap; }
+.tg-bol { font-family: var(--f-serif); font-style: italic; font-size: 12px; text-align: center; color: var(--gold); position: relative; }
+.tg-bol sup { position: absolute; top: -9px; left: 0; right: 0; font-family: var(--f-display); font-style: normal; font-size: 7px; letter-spacing: .1em; text-transform: uppercase; color: #fff; }
+.tg-bol.vib { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.tg-cell { height: 30px; border-radius: 8px; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.05); padding: 0;
+  transition: background var(--t-fast), transform var(--t-fast) var(--ease-spring), box-shadow var(--t-fast); }
+.tg-cell.vib { border-color: rgba(255,255,255,.4); }
+.tg-cell[aria-pressed='true'] { background: linear-gradient(180deg, #ff9bd0, var(--accent) 50%, var(--accent-strong)); box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 0 10px -2px var(--glow); }
+.tg-cell.v-dayan[aria-pressed='true'] { background: linear-gradient(180deg, #fff3c8, #e0b44a 50%, #a87a1a); }
+.tg-cell.v-tin[aria-pressed='true'] { background: linear-gradient(180deg, #e7f9ff, #9fd6e6 50%, #4d93a8); }
+.tg-cell.v-tik[aria-pressed='true'] { background: linear-gradient(180deg, #fff, #cfd4de 50%, #8d93a3); }
+.tg-cell.now, .tg-bol.now, .tg-note.now { transform: translateY(-2px); box-shadow: 0 0 0 2px #fff; border-radius: 8px; }
+.tg-note { font-family: var(--f-pixel); font-size: 12px; white-space: pre-line; text-align: center; color: #fff; line-height: 1; }
+.taal__note { margin: 0; font-family: var(--f-serif); font-size: 13px; line-height: 1.5; color: #f6dbe8; }
+@container (max-width: 620px) {
+  .taal { grid-template-columns: 1fr; grid-template-rows: 200px minmax(0, 1fr); }
+  .taal__deck { border-left: 0; }
+  .tg-row { grid-template-columns: 64px repeat(var(--steps), minmax(26px, 1fr)); }
+  .tg-head { white-space: normal; line-height: 1.1; }
+}

@@ -1,0 +1,40 @@
+.scrap { display: grid; grid-template-rows: auto 1fr auto; height: 100%; }
+.scrap__tray { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; padding: 10px 12px; border-bottom: 1px solid rgba(0,0,0,.08); background: rgba(255,255,255,.4); }
+.scrap__stickers, .scrap__swatches { display: flex; flex-wrap: wrap; gap: 2px; }
+.scrap__add { width: 40px; height: 40px; border-radius: 10px; border: 1px solid transparent; background: transparent; padding: 2px; transition: transform var(--t-fast) var(--ease-spring); }
+.scrap__add:hover { transform: scale(1.12) rotate(-6deg); background: rgba(255,255,255,.7); border-color: rgba(0,0,0,.1); }
+.scrap__sw { width: 22px; height: 22px; border-radius: 50%; border: 2px solid #fff; background: var(--c); box-shadow: 0 1px 3px rgba(0,0,0,.35); padding: 0; }
+.scrap__paper {
+  position: relative; overflow: hidden; touch-action: none;
+  background:
+    radial-gradient(circle at 1px 1px, rgba(58,10,38,.16) 1px, transparent 1.5px) 0 0 / 22px 22px,
+    linear-gradient(135deg, #fff9f1, #fbefe6 60%, #f6e3e9);
+}
+.scrap__paper .empty { position: absolute; inset: 0; display: grid; place-items: center; }
+.item {
+  position: absolute; transform: translate(-50%, -50%) rotate(var(--rot)) scale(var(--s)); padding: 0; border: 0; background: none;
+  cursor: grab; touch-action: none; transition: transform var(--t-med) var(--ease-spring), filter var(--t-fast);
+  filter: drop-shadow(0 6px 6px rgba(58,10,38,.25));
+}
+.item.dragging { cursor: grabbing; transition: none; filter: drop-shadow(0 16px 14px rgba(58,10,38,.35)); }
+.item[aria-pressed='true'] { outline: 2px dashed var(--accent); outline-offset: 6px; border-radius: 6px; }
+.item svg { display: block; }
+.note {
+  display: block; width: 170px; padding: 14px 14px 18px; font-family: var(--f-serif); font-style: italic; font-size: 15px; line-height: 1.35; text-align: left;
+  background: #fff; color: var(--ink); box-shadow: 0 1px 0 rgba(0,0,0,.06); position: relative; overflow-wrap: anywhere;
+}
+.note::before { content: ''; position: absolute; top: -9px; left: 50%; width: 70px; height: 18px; transform: translateX(-50%) rotate(-3deg); background: color-mix(in srgb, var(--accent) 45%, #fff 40%); opacity: .8; }
+.sw { position: relative; display: flex; align-items: flex-end; width: 84px; height: 104px; padding: 6px; background: #fff; }
+.sw::before { content: ''; position: absolute; left: 6px; right: 6px; top: 6px; height: 72px; background: var(--c); }
+.sw b { font-family: var(--f-pixel); font-weight: 400; font-size: 15px; color: var(--ink); }
+.scrap__inspect { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 12px; border-top: 1px solid rgba(0,0,0,.08); background: rgba(255,255,255,.55); }
+.scrap__inspect[hidden] { display: none; }
+.scrap__text { flex: 1 1 180px; }
+.scrap__text[hidden] { display: none; }
+@container (max-width: 560px) {
+  .scrap__tray .label { display: none; }
+  .scrap__add { width: 34px; height: 34px; }
+  .scrap__add svg { width: 28px; height: 28px; }
+  .item svg { width: 56px; height: 56px; }
+  .note { width: 130px; font-size: 13px; }
+}
